@@ -1,2 +1,24 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<h1>Chat</h1>
+
+<div id="messages">
+  <%= turbo_frame_tag "messages" do %>
+    <% @messages.each do |message| %>
+      <p><%= message.content %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with model: @message, url: messages_path, id: "new-message-form" do |form| %>
+  <%= form.text_field :content, id: "message_content", placeholder: "Type your message..." %>
+  <%= form.submit "Create Message" %>
+  <% if @message.errors.any? %>
+    <div id="error-messages">
+      <h3>Errors:</h3>
+      <ul>
+        <% @message.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
