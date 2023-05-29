@@ -1,9 +1,6 @@
 class MessagesController < ApplicationController
   def index
     @messages = Message.all
-  end
-
-  def new
     @message = Message.new
   end
 
@@ -15,6 +12,7 @@ class MessagesController < ApplicationController
     else
       @messages = Message.all
       render :index , status: :unprocessable_entity
+    end
   end
 
   private
