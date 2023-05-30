@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
+
+  let(:message) {create(:message)}
+
   it "is valid with content" do
-    message = Message.new(content: "mensaje")
     expect(message).to be_valid
   end
 
   it "is invalid without content" do
-    message = Message.new(content: nil)
+    message.content = nil
     expect(message).to be_invalid
   end
 
