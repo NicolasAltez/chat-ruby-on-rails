@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 
 gem 'hotwire-rails'
 
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
