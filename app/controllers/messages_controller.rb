@@ -6,14 +6,16 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-
     if @message.save
-      redirect_to messages_path
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
       @messages = Message.all
-      render :index , status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
+  
 
   private
 
