@@ -10,14 +10,14 @@ RSpec.describe "Messages", type: :feature do
       fill_in "message_content", with: "mensaje test"
       click_button "Create Message"
 
-      expect(page).to have_content("mensaje test",wait: 5)
+      expect(page).to have_content("mensaje test")
     end
 
     it "displays an error message if content is blank" do
       visit messages_path
 
       click_button "Create Message"
-      
+
       expect(page).to have_content("1 error prohibited this message from being saved:")
       
       expect(page).to have_content("Content can't be blank")
